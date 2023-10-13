@@ -5,6 +5,8 @@
 
 # Node artifact files
 node_modules/
+dist/
+public/
 stone-js-dotenv-webpack-plugin-*
 
 # Istanbul Code coverage
