@@ -31,13 +31,15 @@
     "node": ">=10"
   },
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint": "standard src",
+    "lint:test": "standard --env mocha tests",
+    "lint:fix": "standard --fix src tests",
     "predoc": "rimraf docs",
     "doc": "jsdoc src/index.mjs -d docs",
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist src",
     "release": "npm run test && npm run build && npm publish --access public",
+    "pretest": "npm run build",
     "test": "npm run lint:test && mocha --experimental-modules --no-warnings -r tests/setup.mjs tests/*.spec.mjs tests/**/*.spec.mjs"
   },
   "dependencies": {
@@ -45,6 +47,7 @@
     "dotenv-expand": "^10.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.23.0",
     "@babel/core": "^7.22.20",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/preset-env": "^7.22.20",
@@ -58,6 +61,7 @@
     "webpack": "^5.88.2"
   },
   "standard": {
-    "parser": "@babel/eslint-parser"
+    "parser": "@babel/eslint-parser",
+    "globals": [ "describe", "it" ]
   }
 }

@@ -4,6 +4,7 @@
 ![npm](https://img.shields.io/npm/v/@stone-js/dotenv-webpack-plugin)
 ![npm](https://img.shields.io/npm/dm/@stone-js/dotenv-webpack-plugin)
 ![Maintenance](https://img.shields.io/maintenance/yes/2023)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Dotenv Webpack plugin allows the separation of frontend and backend environmental variables during build time.
 
