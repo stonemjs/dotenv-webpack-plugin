@@ -6,7 +6,7 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2023)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Dotenv Webpack plugin allows the separation of frontend and backend environmental variables during build time in a secure way.
+Dotenv Webpack plugin enables in a secure way the separation of frontend and backend environmental variables during build time.
 
 ## Table of Contents
 

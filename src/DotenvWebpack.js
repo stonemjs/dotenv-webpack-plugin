@@ -3,6 +3,11 @@ import Dotenv from 'dotenv'
 import { DefinePlugin } from 'webpack'
 import DotenvExpand from 'dotenv-expand'
 
+/**
+ * Class representing a DotenvWebpack.
+ *
+ * @author Mr. Stone <pierre.evens16@gmail.com>
+ */
 export class DotenvWebpack {
   /**
    * Options.
@@ -32,11 +37,21 @@ export class DotenvWebpack {
     }, options)
   }
 
+  /**
+   * Webpack plugin apply method.
+   *
+   * @return {Object}
+   */
   apply (compiler) {
-    new DefinePlugin(this.getData()).apply(compiler)
+    new DefinePlugin(this.getParsedData()).apply(compiler)
   }
 
-  getData () {
+  /**
+   * Get and parse data from .env file.
+   *
+   * @return {Object}
+   */
+  getParsedData () {
     return this.options.prefix.endsWith('.')
       ? Object
         .entries(this.getEnv())
@@ -46,6 +61,11 @@ export class DotenvWebpack {
       : { [this.options.prefix]: JSON.stringify(this.getEnv()) }
   }
 
+  /**
+   * Get the env variables in .env file use Dotenv package.
+   *
+   * @return {Object}
+   */
   getEnv () {
     const config = {
       debug: this.options.debug,
