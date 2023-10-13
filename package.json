@@ -1,7 +1,7 @@
 {
   "name": "@stone-js/dotenv-webpack-plugin",
   "version": "1.0.0",
-  "description": "Fluent and simple API to deal with .env file and env variables for both browser and node.js.",
+  "description": "Dotenv Webpack plugin allows the separation of frontend and backend environmental variables during build time in a secure way.",
   "author": "Mr. Stone <pierre.evens16@gmail.com>",
   "license": "MIT",
   "repository": "git@github.com:stonemjs/dotenv-webpack-plugin.git",
@@ -21,10 +21,8 @@
     "webpack",
     "plugin"
   ],
-  "main": "index.js",
-  "browser": "browser.js",
+  "main": "./dist/index.js",
   "files": [
-    "/src",
     "/dist"
   ],
   "engines": {
@@ -35,7 +33,7 @@
     "lint:test": "standard --env mocha tests",
     "lint:fix": "standard --fix src tests",
     "predoc": "rimraf docs",
-    "doc": "jsdoc src/index.mjs -d docs",
+    "doc": "jsdoc src/index.js -d docs",
     "prebuild": "rimraf dist",
     "build": "babel --copy-files --out-dir dist src",
     "release": "npm run test && npm run build && npm publish --access public",
@@ -51,7 +49,6 @@
     "@babel/core": "^7.22.20",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/preset-env": "^7.22.20",
-    "@babel/register": "^7.22.15",
     "chai": "^4.3.8",
     "jsdoc": "^4.0.2",
     "mocha": "^10.2.0",
@@ -62,6 +59,9 @@
   },
   "standard": {
     "parser": "@babel/eslint-parser",
-    "globals": [ "describe", "it" ]
+    "globals": [
+      "describe",
+      "it"
+    ]
   }
 }

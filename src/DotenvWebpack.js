@@ -22,7 +22,7 @@ export class DotenvWebpack {
    * @param {Options} options - The options.
    */
   constructor (options = {}) {
-    this._options = Object.assign({}, {
+    this.options = Object.assign({}, {
       path: './.env',
       expand: false,
       override: false,
@@ -47,21 +47,17 @@ export class DotenvWebpack {
   }
 
   getEnv () {
-    let env = null
-
     const config = {
       debug: this.options.debug,
       override: this.options.override,
       path: path.resolve(process.cwd(), this.options.path),
-      processEnv: this.options.ignoreProcessEnv ? env : process.env
+      processEnv: this.options.ignoreProcessEnv ? {} : process.env
     }
-
-    env = Dotenv.config(config)
 
     if (this.options.expand) {
-      env = DotenvExpand.expand({ ignoreProcessEnv: this.options.ignoreProcessEnv, parsed: env })
+      return DotenvExpand.expand({ ignoreProcessEnv: this.options.ignoreProcessEnv, parsed: Dotenv.config(config).parsed }).parsed
     }
 
-    return env.parsed
+    return Dotenv.config(config).parsed
   }
 }
